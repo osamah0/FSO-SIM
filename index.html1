@@ -11,76 +11,59 @@
     background: #0D1B2A;
     color: #E8EDF2;
     min-height: 100vh;
-    padding: 24px;
+    padding: 20px;
     display: flex;
     align-items: flex-start;
     justify-content: center;
   }
-  .container { width: 100%; max-width: 820px; }
-
-  h1 {
-    font-size: 15px;
-    font-weight: 600;
-    color: #A8C8E8;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-  .subtitle { font-size: 12px; color: #5A7A9A; margin-bottom: 20px; }
-
-  .section { background: #111E2D; border: 1px solid #1E3048; border-radius: 10px; padding: 16px 20px; margin-bottom: 14px; }
+  .container { width: 100%; max-width: 860px; }
+  h1 { font-size: 15px; font-weight: 600; color: #A8C8E8; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+  .subtitle { font-size: 12px; color: #5A7A9A; margin-bottom: 18px; }
+  .section { background: #111E2D; border: 1px solid #1E3048; border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; }
   .section-title { font-size: 11px; font-weight: 600; color: #4A8AB8; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
-
   .param-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
   .param-row:last-child { margin-bottom: 0; }
   .param-label { font-size: 12px; color: #7A9AB8; width: 140px; flex-shrink: 0; }
   .param-val { font-size: 13px; font-weight: 600; color: #C8E0F4; min-width: 44px; text-align: right; font-family: monospace; }
-
-  input[type=range] {
-    flex: 1;
-    -webkit-appearance: none;
-    height: 3px;
-    background: #1E3048;
-    border-radius: 2px;
-    outline: none;
-  }
-  input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 14px; height: 14px;
-    border-radius: 50%;
-    background: #3A8AC8;
-    cursor: pointer;
-  }
+  input[type=range] { flex: 1; -webkit-appearance: none; height: 3px; background: #1E3048; border-radius: 2px; outline: none; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: #3A8AC8; cursor: pointer; }
   input[type=range]:hover::-webkit-slider-thumb { background: #5AAAE8; }
-
-  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px; }
+  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 12px; }
   .metric { background: #0A1520; border: 1px solid #1E3048; border-radius: 8px; padding: 12px 14px; }
   .metric-label { font-size: 10px; color: #4A7A9A; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
   .metric-val { font-size: 20px; font-weight: 600; color: #C8E0F4; font-family: monospace; }
-
   canvas.sig { width: 100%; height: 110px; border-radius: 6px; display: block; }
-  .img-row { display: flex; gap: 14px; align-items: flex-end; }
-  canvas.img-c { width: 80px; height: 80px; image-rendering: pixelated; border-radius: 6px; border: 1px solid #1E3048; }
+  .img-row { display: flex; gap: 14px; align-items: flex-start; flex-wrap: wrap; }
+  .img-block { display: flex; flex-direction: column; align-items: center; }
+  canvas.img-c { image-rendering: pixelated; border-radius: 6px; border: 1px solid #1E3048; display: block; }
   .img-label { font-size: 11px; color: #4A7A9A; margin-top: 5px; text-align: center; }
   canvas.ber-hist { width: 100%; height: 80px; border-radius: 6px; border: 1px solid #1E3048; }
-
-  .run-btn {
-    background: #1A3A5A;
-    border: 1px solid #2A5A8A;
-    color: #A8D0F0;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    padding: 10px 26px;
-    border-radius: 7px;
-    cursor: pointer;
-    transition: background 0.15s;
-  }
+  .run-btn { background: #1A3A5A; border: 1px solid #2A5A8A; color: #A8D0F0; font-size: 13px; font-weight: 600; padding: 10px 26px; border-radius: 7px; cursor: pointer; }
   .run-btn:hover { background: #224870; }
-
-  .legend { display: flex; gap: 16px; margin-bottom: 6px; }
+  .legend { display: flex; gap: 16px; margin-bottom: 8px; flex-wrap: wrap; }
   .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #5A7A9A; }
   .legend-dot { width: 20px; height: 2px; border-radius: 1px; }
+
+  /* Upload area */
+  .upload-area {
+    border: 1.5px dashed #2A5A8A;
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    position: relative;
+  }
+  .upload-area:hover { border-color: #3A8AC8; background: rgba(58,138,200,0.06); }
+  .upload-area.has-img { border-color: #3ABAA0; border-style: solid; }
+  .upload-area input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .upload-text { font-size: 12px; color: #4A7A9A; }
+  .upload-preview { width: 60px; height: 60px; image-rendering: pixelated; border-radius: 5px; border: 1px solid #1E3048; margin: 0 auto 6px; display: none; }
+
+  .img-size-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+  .img-size-row label { font-size: 12px; color: #7A9AB8; }
+  .size-btn { background: #0A1520; border: 1px solid #1E3048; color: #7A9AB8; font-size: 11px; padding: 4px 10px; border-radius: 5px; cursor: pointer; }
+  .size-btn.active { border-color: #3A8AC8; color: #A8D0F0; background: #1A3A5A; }
 </style>
 </head>
 <body>
@@ -89,29 +72,49 @@
   <h1>Lasercom FSO — Channel Simulator</h1>
   <p class="subtitle">OOK modulation · Adaptive threshold · BER analysis</p>
 
-  <div class="section">
-    <div class="section-title">Channel Parameters</div>
-    <div class="param-row">
-      <span class="param-label">Attenuation α</span>
-      <input type="range" id="att" min="0" max="0.9" step="0.01" value="0.30" oninput="document.getElementById('att-v').textContent=parseFloat(this.value).toFixed(2)">
-      <span class="param-val" id="att-v">0.30</span>
+  <!-- Upload + params side by side -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+
+    <!-- Image upload -->
+    <div class="section">
+      <div class="section-title">Input Image</div>
+      <div class="upload-area" id="uploadArea">
+        <input type="file" id="imgInput" accept="image/*" onchange="loadUserImage(this)">
+        <img id="uploadPreview" class="upload-preview">
+        <div class="upload-text" id="uploadText">📁 Click to upload your image<br><span style="font-size:10px;color:#3A6A8A;">JPG / PNG / any format</span></div>
+      </div>
+      <div class="img-size-row">
+        <label>Resolution:</label>
+        <button class="size-btn active" onclick="setSize(32, this)">32×32</button>
+        <button class="size-btn active" onclick="setSize(64, this)" id="btn64" style="border-color:#3A8AC8;color:#A8D0F0;background:#1A3A5A;">64×64</button>
+        <button class="size-btn" onclick="setSize(128, this)">128×128</button>
+      </div>
     </div>
-    <div class="param-row">
-      <span class="param-label">Ambient Light</span>
-      <input type="range" id="amb" min="0" max="0.8" step="0.01" value="0.30" oninput="document.getElementById('amb-v').textContent=parseFloat(this.value).toFixed(2)">
-      <span class="param-val" id="amb-v">0.30</span>
-    </div>
-    <div class="param-row">
-      <span class="param-label">Noise σ</span>
-      <input type="range" id="noise" min="0.01" max="0.5" step="0.01" value="0.15" oninput="document.getElementById('noise-v').textContent=parseFloat(this.value).toFixed(2)">
-      <span class="param-val" id="noise-v">0.15</span>
-    </div>
-    <div style="margin-top:14px; display:flex; gap:10px; align-items:center;">
+
+    <!-- Channel params -->
+    <div class="section">
+      <div class="section-title">Channel Parameters</div>
+      <div class="param-row">
+        <span class="param-label">Attenuation α</span>
+        <input type="range" id="att" min="0" max="0.9" step="0.01" value="0.30" oninput="document.getElementById('att-v').textContent=parseFloat(this.value).toFixed(2)">
+        <span class="param-val" id="att-v">0.30</span>
+      </div>
+      <div class="param-row">
+        <span class="param-label">Ambient Light</span>
+        <input type="range" id="amb" min="0" max="0.8" step="0.01" value="0.30" oninput="document.getElementById('amb-v').textContent=parseFloat(this.value).toFixed(2)">
+        <span class="param-val" id="amb-v">0.30</span>
+      </div>
+      <div class="param-row" style="margin-bottom:14px;">
+        <span class="param-label">Noise σ</span>
+        <input type="range" id="noise" min="0.01" max="0.5" step="0.01" value="0.15" oninput="document.getElementById('noise-v').textContent=parseFloat(this.value).toFixed(2)">
+        <span class="param-val" id="noise-v">0.15</span>
+      </div>
       <button class="run-btn" onclick="runSim()">▶ Run Simulation</button>
-      <span id="status" style="font-size:12px; color:#3A8AB8;"></span>
+      <span id="status" style="font-size:12px;color:#3A8AB8;margin-left:10px;"></span>
     </div>
   </div>
 
+  <!-- Metrics -->
   <div class="metrics">
     <div class="metric"><div class="metric-label">BER</div><div class="metric-val" id="ber-val">—</div></div>
     <div class="metric"><div class="metric-label">Threshold</div><div class="metric-val" id="thr-val">—</div></div>
@@ -119,29 +122,31 @@
     <div class="metric"><div class="metric-label">Quality</div><div class="metric-val" id="qual-val">—</div></div>
   </div>
 
+  <!-- Signal -->
   <div class="section">
-    <div class="section-title">Signal Analysis — first 24 bits (SPB = 6)</div>
+    <div class="section-title">Signal Waveform — first 24 bits</div>
     <div class="legend">
-      <span class="legend-item"><span class="legend-dot" style="background:#3ABAA0;"></span>Transmitted TX</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#E07050; height:1px;"></span>Received RX (noisy)</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#D4A020; border-top:2px dashed #D4A020; height:0;"></span>Adaptive threshold</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#3ABAA0;height:2px;"></span>Transmitted TX</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#E07050;height:1px;"></span>Received RX (noisy)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#D4A020;border-top:2px dashed #D4A020;height:0;width:20px;"></span>Adaptive threshold</span>
     </div>
     <canvas id="sigCanvas" class="sig" height="110" role="img" aria-label="Signal waveform TX vs RX with adaptive threshold"></canvas>
   </div>
 
+  <!-- Images -->
   <div class="section">
     <div class="section-title">Image Reconstruction</div>
     <div class="img-row">
-      <div>
-        <canvas id="origCanvas" class="img-c" width="64" height="64" role="img" aria-label="Original test image"></canvas>
+      <div class="img-block">
+        <canvas id="origCanvas" class="img-c" width="64" height="64" role="img" aria-label="Original image"></canvas>
         <div class="img-label">Original</div>
       </div>
-      <div>
+      <div class="img-block">
         <canvas id="recvCanvas" class="img-c" width="64" height="64" role="img" aria-label="Received image after FSO channel"></canvas>
         <div class="img-label">Received</div>
       </div>
-      <div style="flex:1;">
-        <canvas id="berCanvas" class="ber-hist" role="img" aria-label="BER history over simulation runs"></canvas>
+      <div class="img-block" style="flex:1; min-width:140px;">
+        <canvas id="berCanvas" class="ber-hist" role="img" aria-label="BER history"></canvas>
         <div class="img-label">BER history (last 20 runs)</div>
       </div>
     </div>
@@ -150,7 +155,83 @@
 </div>
 
 <script>
+let simSize = 64;
+let userPixels = null;
 const berHistory = [];
+
+function setSize(s, btn) {
+  simSize = s;
+  document.querySelectorAll('.size-btn').forEach(b => { b.style.borderColor='#1E3048'; b.style.color='#7A9AB8'; b.style.background='#0A1520'; });
+  btn.style.borderColor = '#3A8AC8'; btn.style.color = '#A8D0F0'; btn.style.background = '#1A3A5A';
+  if (userPixels) resampleAndShow();
+}
+
+function loadUserImage(input) {
+  if (!input.files || !input.files[0]) return;
+  const file = input.files[0];
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = function() {
+      userPixels = img;
+      const area = document.getElementById('uploadArea');
+      area.classList.add('has-img');
+      const prev = document.getElementById('uploadPreview');
+      prev.src = e.target.result;
+      prev.style.display = 'block';
+      document.getElementById('uploadText').textContent = file.name;
+      resampleAndShow();
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function resampleAndShow() {
+  const c = document.createElement('canvas');
+  c.width = simSize; c.height = simSize;
+  const ctx = c.getContext('2d');
+  ctx.drawImage(userPixels, 0, 0, simSize, simSize);
+  const d = ctx.getImageData(0, 0, simSize, simSize).data;
+  const gray = new Uint8Array(simSize * simSize);
+  for (let i = 0; i < simSize * simSize; i++)
+    gray[i] = Math.round(0.299 * d[i*4] + 0.587 * d[i*4+1] + 0.114 * d[i*4+2]);
+  return gray;
+}
+
+function makeTestImage() {
+  const data = new Uint8Array(simSize * simSize);
+  for (let y = 0; y < simSize; y++) {
+    for (let x = 0; x < simSize; x++) {
+      const cx = x - simSize/2, cy = y - simSize/2;
+      const r = Math.sqrt(cx*cx + cy*cy);
+      let v = 0;
+      if (r < simSize*0.44) v = Math.round(200*(1-r/(simSize*0.44)));
+      if (r < simSize*0.16) v = 255;
+      if (Math.abs(cx) < simSize*0.05 && Math.abs(cy) < simSize*0.31) v = 255;
+      if (Math.abs(cy) < simSize*0.05 && Math.abs(cx) < simSize*0.31) v = 255;
+      data[y * simSize + x] = Math.min(255, v);
+    }
+  }
+  return data;
+}
+
+function imgToBits(img) {
+  const bits = new Uint8Array(img.length * 8);
+  for (let i = 0; i < img.length; i++)
+    for (let b = 7; b >= 0; b--) bits[i*8+(7-b)] = (img[i] >> b) & 1;
+  return bits;
+}
+
+function bitsToImg(bits, size) {
+  const img = new Uint8Array(size * size);
+  for (let i = 0; i < size * size; i++) {
+    let v = 0;
+    for (let b = 0; b < 8; b++) v = (v << 1) | (bits[i*8+b] || 0);
+    img[i] = v;
+  }
+  return img;
+}
 
 function mulberry32(a) {
   return function() {
@@ -161,162 +242,114 @@ function mulberry32(a) {
   };
 }
 
-function makeTestImage() {
-  const data = new Uint8Array(64 * 64);
-  for (let y = 0; y < 64; y++) {
-    for (let x = 0; x < 64; x++) {
-      const cx = x - 32, cy = y - 32;
-      const r = Math.sqrt(cx * cx + cy * cy);
-      let v = 0;
-      if (r < 28) v = Math.round(200 * (1 - r / 28));
-      if (r < 10) v = 255;
-      if (Math.abs(cx) < 3 && Math.abs(cy) < 20) v = 255;
-      if (Math.abs(cy) < 3 && Math.abs(cx) < 20) v = 255;
-      data[y * 64 + x] = Math.min(255, v);
-    }
-  }
-  return data;
-}
-
-function imgToBits(img) {
-  const bits = new Uint8Array(img.length * 8);
-  for (let i = 0; i < img.length; i++) {
-    for (let b = 7; b >= 0; b--) bits[i * 8 + (7 - b)] = (img[i] >> b) & 1;
-  }
-  return bits;
-}
-
-function bitsToImg(bits) {
-  const img = new Uint8Array(64 * 64);
-  for (let i = 0; i < 64 * 64; i++) {
-    let v = 0;
-    for (let b = 0; b < 8; b++) v = (v << 1) | (bits[i * 8 + b] || 0);
-    img[i] = v;
-  }
-  return img;
-}
-
 function simulate(txBits, att, amb, ns) {
   const rng = mulberry32(42);
-  const SPB = 6;
-  const n = txBits.length;
+  const SPB = 6, n = txBits.length;
   const txWave = new Float32Array(n * SPB);
-  for (let i = 0; i < n; i++) for (let s = 0; s < SPB; s++) txWave[i * SPB + s] = txBits[i];
-
+  for (let i = 0; i < n; i++) for (let s = 0; s < SPB; s++) txWave[i*SPB+s] = txBits[i];
   const rxAnalog = new Float32Array(txWave.length);
   for (let i = 0; i < txWave.length; i++)
-    rxAnalog[i] = txWave[i] * (1 - att) + amb + (rng() * 2 - 1) * ns * 1.732;
-
+    rxAnalog[i] = txWave[i]*(1-att) + amb + (rng()*2-1)*ns*1.732;
   let mn = Infinity, mx = -Infinity;
-  for (let v of rxAnalog) { if (v < mn) mn = v; if (v > mx) mx = v; }
-  const thresh = (mn + mx) / 2;
-
+  for (let v of rxAnalog) { if(v<mn) mn=v; if(v>mx) mx=v; }
+  const thresh = (mn+mx)/2;
   const rxBits = new Uint8Array(n);
-  for (let i = 0; i < n; i++) rxBits[i] = rxAnalog[i * SPB + Math.floor(SPB / 2)] > thresh ? 1 : 0;
-
+  for (let i = 0; i < n; i++) rxBits[i] = rxAnalog[i*SPB+Math.floor(SPB/2)] > thresh ? 1 : 0;
   let errors = 0;
-  for (let i = 0; i < n; i++) if (rxBits[i] !== txBits[i]) errors++;
-  return { txWave, rxAnalog, rxBits, thresh, ber: errors / n };
+  for (let i = 0; i < n; i++) if(rxBits[i] !== txBits[i]) errors++;
+  return { txWave, rxAnalog, rxBits, thresh, ber: errors/n };
 }
 
 function drawSignal(txWave, rxAnalog, thresh) {
   const canvas = document.getElementById('sigCanvas');
-  const dpr = devicePixelRatio || 1;
-  canvas.width = canvas.offsetWidth * dpr;
-  canvas.height = 110 * dpr;
+  const dpr = devicePixelRatio||1;
+  canvas.width = canvas.offsetWidth*dpr; canvas.height = 110*dpr;
   const ctx = canvas.getContext('2d');
   ctx.scale(dpr, dpr);
   const W = canvas.offsetWidth, H = 110, pad = 14;
-  ctx.clearRect(0, 0, W, H);
-
-  const n = Math.min(24 * 6, txWave.length);
-  const toY = v => H - pad - (v + 0.05) / 1.4 * (H - pad * 2);
-
-  ctx.strokeStyle = '#3ABAA0'; ctx.lineWidth = 2; ctx.beginPath();
-  for (let i = 0; i < n; i++) { const x = pad + i / n * (W - pad * 2); i === 0 ? ctx.moveTo(x, toY(txWave[i])) : ctx.lineTo(x, toY(txWave[i])); }
+  ctx.clearRect(0,0,W,H);
+  const n = Math.min(24*6, txWave.length);
+  const toY = v => H-pad-(v+0.05)/1.4*(H-pad*2);
+  ctx.strokeStyle='#3ABAA0'; ctx.lineWidth=2; ctx.beginPath();
+  for(let i=0;i<n;i++){const x=pad+i/n*(W-pad*2);i===0?ctx.moveTo(x,toY(txWave[i])):ctx.lineTo(x,toY(txWave[i]));}
   ctx.stroke();
-
-  ctx.strokeStyle = '#E07050'; ctx.lineWidth = 1; ctx.globalAlpha = 0.85; ctx.beginPath();
-  for (let i = 0; i < n; i++) { const x = pad + i / n * (W - pad * 2); i === 0 ? ctx.moveTo(x, toY(rxAnalog[i])) : ctx.lineTo(x, toY(rxAnalog[i])); }
-  ctx.stroke(); ctx.globalAlpha = 1;
-
-  const ty = toY(thresh);
-  ctx.strokeStyle = '#D4A020'; ctx.lineWidth = 1.5; ctx.setLineDash([5, 4]);
-  ctx.beginPath(); ctx.moveTo(pad, ty); ctx.lineTo(W - pad, ty); ctx.stroke();
-  ctx.setLineDash([]);
+  ctx.strokeStyle='#E07050'; ctx.lineWidth=1; ctx.globalAlpha=0.85; ctx.beginPath();
+  for(let i=0;i<n;i++){const x=pad+i/n*(W-pad*2);i===0?ctx.moveTo(x,toY(rxAnalog[i])):ctx.lineTo(x,toY(rxAnalog[i]));}
+  ctx.stroke(); ctx.globalAlpha=1;
+  const ty=toY(thresh);
+  ctx.strokeStyle='#D4A020'; ctx.lineWidth=1.5; ctx.setLineDash([5,4]);
+  ctx.beginPath(); ctx.moveTo(pad,ty); ctx.lineTo(W-pad,ty); ctx.stroke(); ctx.setLineDash([]);
 }
 
-function drawImage(id, px) {
+function drawImage(id, px, size) {
   const c = document.getElementById(id);
+  const display = Math.min(128, Math.max(64, size));
+  c.width = size; c.height = size;
+  c.style.width = display+'px'; c.style.height = display+'px';
   const ctx = c.getContext('2d');
-  const d = ctx.createImageData(64, 64);
-  for (let i = 0; i < 64 * 64; i++) { d.data[i*4]=px[i]; d.data[i*4+1]=px[i]; d.data[i*4+2]=px[i]; d.data[i*4+3]=255; }
-  ctx.putImageData(d, 0, 0);
+  const d = ctx.createImageData(size, size);
+  for(let i=0;i<size*size;i++){d.data[i*4]=px[i];d.data[i*4+1]=px[i];d.data[i*4+2]=px[i];d.data[i*4+3]=255;}
+  ctx.putImageData(d,0,0);
 }
 
 function drawHistory() {
   const canvas = document.getElementById('berCanvas');
-  const dpr = devicePixelRatio || 1;
-  canvas.width = canvas.offsetWidth * dpr;
-  canvas.height = 80 * dpr;
+  const dpr = devicePixelRatio||1;
+  canvas.width = canvas.offsetWidth*dpr; canvas.height = 80*dpr;
   const ctx = canvas.getContext('2d');
-  ctx.scale(dpr, dpr);
-  const W = canvas.offsetWidth, H = 80;
-  ctx.clearRect(0, 0, W, H);
-  if (berHistory.length < 2) return;
-  const max = Math.max(...berHistory, 0.01);
-  ctx.fillStyle = 'rgba(58,186,160,0.12)';
-  ctx.strokeStyle = '#3ABAA0'; ctx.lineWidth = 1.5;
+  ctx.scale(dpr,dpr);
+  const W=canvas.offsetWidth, H=80;
+  ctx.clearRect(0,0,W,H);
+  if(berHistory.length<2) return;
+  const max=Math.max(...berHistory,0.01);
+  ctx.strokeStyle='#3ABAA0'; ctx.lineWidth=1.5;
   ctx.beginPath();
-  berHistory.forEach((v, i) => {
-    const x = i / (berHistory.length - 1) * W;
-    const y = H - 4 - (v / max) * (H - 8);
-    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  berHistory.forEach((v,i)=>{
+    const x=i/(berHistory.length-1)*W;
+    const y=H-4-(v/max)*(H-8);
+    i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
   });
   ctx.stroke();
-  const last = ctx.createLinearGradient(0, 0, 0, H);
-  last.addColorStop(0, 'rgba(58,186,160,0.25)');
-  last.addColorStop(1, 'rgba(58,186,160,0)');
-  ctx.fillStyle = last;
-  const lx = (berHistory.length - 1) / (berHistory.length - 1) * W;
-  const ly = H - 4 - (berHistory[berHistory.length - 1] / max) * (H - 8);
-  ctx.lineTo(lx, H); ctx.lineTo(0, H); ctx.closePath(); ctx.fill();
+  const g=ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,'rgba(58,186,160,0.25)'); g.addColorStop(1,'rgba(58,186,160,0)');
+  ctx.fillStyle=g;
+  const lx=W, ly=H-4-(berHistory[berHistory.length-1]/max)*(H-8);
+  ctx.lineTo(lx,H); ctx.lineTo(0,H); ctx.closePath(); ctx.fill();
 }
 
 function runSim() {
-  const att = parseFloat(document.getElementById('att').value);
-  const amb = parseFloat(document.getElementById('amb').value);
-  const ns = parseFloat(document.getElementById('noise').value);
+  const att=parseFloat(document.getElementById('att').value);
+  const amb=parseFloat(document.getElementById('amb').value);
+  const ns=parseFloat(document.getElementById('noise').value);
+  document.getElementById('status').textContent='Running…';
 
-  document.getElementById('status').textContent = 'Running…';
+  const orig = userPixels ? resampleAndShow() : makeTestImage();
+  const {txWave,rxAnalog,rxBits,thresh,ber} = simulate(imgToBits(orig),att,amb,ns);
+  const recv = bitsToImg(rxBits, simSize);
 
-  const orig = makeTestImage();
-  const { txWave, rxAnalog, rxBits, thresh, ber } = simulate(imgToBits(orig), att, amb, ns);
-
-  drawImage('origCanvas', orig);
-  drawImage('recvCanvas', bitsToImg(rxBits));
+  drawImage('origCanvas', orig, simSize);
+  drawImage('recvCanvas', recv, simSize);
   drawSignal(txWave, rxAnalog, thresh);
 
   berHistory.push(ber);
-  if (berHistory.length > 20) berHistory.shift();
+  if(berHistory.length>20) berHistory.shift();
   drawHistory();
 
-  document.getElementById('ber-val').textContent = ber < 0.0001 ? ber.toExponential(2) : ber.toFixed(4);
+  document.getElementById('ber-val').textContent = ber<0.0001?ber.toExponential(2):ber.toFixed(4);
   document.getElementById('thr-val').textContent = thresh.toFixed(3);
-  document.getElementById('snr-val').textContent = ((1 - att) / (ns + 0.001)).toFixed(2);
+  document.getElementById('snr-val').textContent = ((1-att)/(ns+0.001)).toFixed(2);
 
-  const qEl = document.getElementById('qual-val');
-  if (ber < 0.001) { qEl.textContent = 'Excellent'; qEl.style.color = '#3ABAA0'; }
-  else if (ber < 0.01) { qEl.textContent = 'Good'; qEl.style.color = '#8AC860'; }
-  else if (ber < 0.05) { qEl.textContent = 'Fair'; qEl.style.color = '#D4A020'; }
-  else { qEl.textContent = 'Poor'; qEl.style.color = '#E05040'; }
+  const qEl=document.getElementById('qual-val');
+  if(ber<0.001){qEl.textContent='Excellent';qEl.style.color='#3ABAA0';}
+  else if(ber<0.01){qEl.textContent='Good';qEl.style.color='#8AC860';}
+  else if(ber<0.05){qEl.textContent='Fair';qEl.style.color='#D4A020';}
+  else{qEl.textContent='Poor';qEl.style.color='#E05040';}
 
-  document.getElementById('status').textContent = 'Done ✓';
-  setTimeout(() => document.getElementById('status').textContent = '', 1200);
+  document.getElementById('status').textContent='Done ✓';
+  setTimeout(()=>document.getElementById('status').textContent='',1200);
 }
 
 window.addEventListener('load', runSim);
-window.addEventListener('resize', () => { /* redraw on resize */ });
 </script>
 </body>
 </html>
